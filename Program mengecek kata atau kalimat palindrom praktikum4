@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+char kata[50] = {'\0'};
+char temp[50] = {'\0'};
+int n, i, j = 0;
+
+//menulis ulang char yang ada didalam kata ke temp dengan posisi terbalik tujuannya adalah untuk membandingkannya dengan strcmp nanti
+void rewrite()
+{
+    for(i = n-1; i >= 0; i--){
+        temp[j] = kata[i];
+        j++;
+    }
+}
+int main(){
+
+    printf("Program Mengecek Kata atau kalimat Palindrom\n");
+    printf("\nInput Kata atau kalimat : ");
+    gets(kata);
+    //untuk menghitung jumlah string dari inputan
+    n = strlen(kata);
+    //untuk mengubah bila ada kata yang menggunakan huruf besar
+    for(i = 0; kata[i]; i++){
+        kata[i] = tolower(kata[i]);
+    }
+    rewrite();
+    //membandingkan isi dari kata dan temp jika sama maka palindrom jika tidak maka bukan
+    printf("Hasilnya : ");
+    if(strcmp(kata, temp) == 0)
+        printf("Palindrom");
+    else
+        printf("Bukan Palindrom");
+    return 0;
+}
